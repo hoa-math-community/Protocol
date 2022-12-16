@@ -93,7 +93,7 @@ class Protocol extends Node
     protected function initialize(): void
     {
         $root  = dirname(__DIR__, 3);
-        $argv0 = realpath($_SERVER['argv'][0]);
+        $argv0 = array_key_exists('argv', $_SERVER) ? realpath($_SERVER['argv'][0]) : false;
 
         $cwd =
             'cli' === PHP_SAPI
@@ -140,7 +140,7 @@ class Protocol extends Node
         $this[] = new Node\Library(
             'Library',
             $root . DS . 'Hoathis' . DS . RS .
-            $root . DS . 'Hoa' . DS
+            $root . DS . 'Hoa-math-community' . DS
         );
     }
 
